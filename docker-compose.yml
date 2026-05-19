@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: doorloop-assessment-mongodb
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: doorloop_assessment
+    volumes:
+      - mongodb_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - assessment-network
+
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: doorloop-assessment-backend
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      MONGODB_URI: mongodb://mongodb:27017/doorloop_assessment
+      JWT_SECRET: your-super-secret-jwt-key-for-assessment
+      JWT_EXPIRES_IN: 7d
+    depends_on:
+      - mongodb
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+    networks:
+      - assessment-network
+    command: sh -c "npm run build && npm start"
+
+  frontend:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile
+    container_name: doorloop-assessment-frontend
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      REACT_APP_API_URL: http://localhost:3001/api
+    depends_on:
+      - backend
+    volumes:
+      - ./apps/frontend:/app
+      - /app/node_modules
+    networks:
+      - assessment-network
+    command: npm run dev
+
+volumes:
+  mongodb_data:
+
+networks:
+  assessment-network:
+    driver: bridge

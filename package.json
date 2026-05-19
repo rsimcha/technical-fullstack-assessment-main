@@ -1,0 +1,70 @@
+{
+  "name": "doorloop-technical-assessment",
+  "version": "1.0.0",
+  "description": "DoorLoop Technical Assessment - Fullstack Property Management System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nx run-many --target=dev --projects=backend,frontend --parallel",
+    "dev:backend": "nx dev backend",
+    "dev:frontend": "nx dev frontend",
+    "build": "nx run-many --target=build --projects=backend,frontend",
+    "build:backend": "nx build backend",
+    "build:frontend": "nx build frontend",
+    "test": "nx run-many --target=test --projects=backend,frontend",
+    "test:backend": "nx test backend",
+    "test:frontend": "nx test frontend",
+    "lint": "nx run-many --target=lint --projects=backend,frontend",
+    "lint:backend": "nx lint backend",
+    "lint:frontend": "nx lint frontend",
+    "lint:fix": "nx run-many --target=lint --projects=backend,frontend --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "seed": "nx seed backend",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+    "nx": "nx",
+    "graph": "nx graph",
+    "affected": "nx affected",
+    "affected:build": "nx affected --target=build",
+    "affected:test": "nx affected --target=test",
+    "affected:lint": "nx affected --target=lint"
+  },
+  "keywords": [
+    "doorloop",
+    "assessment",
+    "property-management",
+    "nodejs",
+    "react",
+    "mongodb",
+    "nx",
+    "monorepo"
+  ],
+  "author": "DoorLoop",
+  "license": "ISC",
+  "devDependencies": {
+    "@nx/devkit": "^17.2.8",
+    "@nx/eslint": "^17.2.8",
+    "@nx/eslint-plugin": "^21.5.3",
+    "@nx/js": "^17.2.8",
+    "@nx/node": "^17.2.8",
+    "@nx/react": "^17.2.8",
+    "@nx/vite": "^17.2.8",
+    "@nx/workspace": "^17.2.8",
+    "@typescript-eslint/eslint-plugin": "^8.44.1",
+    "@typescript-eslint/parser": "^8.44.1",
+    "concurrently": "^8.2.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "nx": "^17.2.8",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "dependencies": {
+    "axios": "^1.12.2"
+  }
+}
