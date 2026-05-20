@@ -1,11 +1,27 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
+import swc from 'unplugin-swc';
 
 export default defineConfig({
+  plugins: [
+    swc.vite({
+      jsc: {
+        parser: {
+          syntax: 'typescript',
+          decorators: true,
+        },
+        transform: {
+          legacyDecorator: true,
+          decoratorMetadata: true,
+        },
+        target: 'es2020',
+      },
+    }),
+  ],
   test: {
     globals: true,
     environment: 'node',
-    include: ['apps/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    exclude: ['node_modules', 'dist'],
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    exclude: ['**/node_modules/**', '**/dist/**'],
   },
 });

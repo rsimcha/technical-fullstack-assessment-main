@@ -51,6 +51,7 @@
     "@nx/react": "^17.2.8",
     "@nx/vite": "^17.2.8",
     "@nx/workspace": "^17.2.8",
+    "@swc/core": "^1.15.33",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "concurrently": "^8.2.2",
@@ -59,7 +60,12 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "nx": "^17.2.8",
     "prettier": "^3.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "unplugin-swc": "^1.5.9",
+    "vitest": "^0.34.6"
+  },
+  "overrides": {
+    "vitest": "^0.34.6"
   },
   "workspaces": [
     "apps/*"
