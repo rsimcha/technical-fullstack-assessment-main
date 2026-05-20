@@ -6,7 +6,7 @@ import {
 } from '../models/MaintenanceRequest';
 import { UserModel } from '../models/User';
 import { createError } from '../middleware/errorHandler';
-import { assertTransition } from '../utils/maintenanceStatus';
+import { assertTransition } from '../utils/maintenance/status';
 import {
   CreateMaintenanceRequestInput,
   ListMaintenanceQuery,
