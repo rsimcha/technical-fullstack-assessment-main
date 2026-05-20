@@ -10,8 +10,7 @@ export interface AppError extends Error {
 export const errorHandler = (
   err: AppError | ZodError | Error,
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ): void => {
   let statusCode = 500;
   let message = 'Internal Server Error';

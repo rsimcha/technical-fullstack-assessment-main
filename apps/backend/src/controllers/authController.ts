@@ -1,10 +1,10 @@
-import { Response, NextFunction } from 'express';
+import { Response } from 'express';
 import { AuthenticatedRequest } from '../middleware/auth';
 import { authService } from '../services/authService';
 import { asyncHandler } from '../middleware/errorHandler';
 
 export const register = asyncHandler(
-  async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     const result = await authService.register(req.body);
 
     res.status(201).json({
@@ -16,7 +16,7 @@ export const register = asyncHandler(
 );
 
 export const login = asyncHandler(
-  async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     const result = await authService.login(req.body);
 
     res.status(200).json({
@@ -28,7 +28,7 @@ export const login = asyncHandler(
 );
 
 export const getProfile = asyncHandler(
-  async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     res.status(200).json({
       success: true,
       message: 'Profile retrieved successfully',
@@ -38,7 +38,7 @@ export const getProfile = asyncHandler(
 );
 
 export const refreshToken = asyncHandler(
-  async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  async (req: AuthenticatedRequest, res: Response) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
 
     if (!token) {
