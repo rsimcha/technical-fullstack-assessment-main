@@ -18,7 +18,9 @@ export const canTransition = (
   from: MaintenanceStatus,
   to: MaintenanceStatus
 ): boolean => {
-  if (from === to) return true;
+  if (from === to) {
+    return true;
+  }
   return TRANSITIONS[from]?.includes(to) ?? false;
 };
 

@@ -9,6 +9,7 @@ import { errorHandler } from './middleware/errorHandler';
 
 // Routes
 import authRoutes from './routes/auth';
+import maintenanceRoutes from './routes/maintenance';
 
 // Load environment variables
 dotenv.config();
@@ -52,6 +53,7 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api/auth', authRoutes);
+app.use('/api/maintenance', maintenanceRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {
@@ -74,6 +76,9 @@ const startServer = async () => {
         `📊 Health check available at http://localhost:${PORT}/health`
       );
       logger.info(`🔐 Auth API available at http://localhost:${PORT}/api/auth`);
+      logger.info(
+        `🛠  Maintenance API available at http://localhost:${PORT}/api/maintenance`
+      );
     });
   } catch (error) {
     logger.error('Failed to start server:', error);
