@@ -41,6 +41,7 @@
     "@typescript-eslint/parser": "^6.4.0",
     "@vitest/coverage-v8": "^0.34.3",
     "eslint": "^8.47.0",
+    "mongodb-memory-server": "^11.1.0",
     "supertest": "^6.3.3",
     "vitest": "^0.34.3"
   },
