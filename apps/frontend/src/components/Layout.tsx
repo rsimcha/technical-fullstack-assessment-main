@@ -9,6 +9,7 @@ import {
   BarChart3,
   Menu,
   X,
+  Wrench,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -27,6 +28,7 @@ const Layout: React.FC = () => {
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: Home },
+    { name: 'Maintenance', href: '/maintenance', icon: Wrench },
     { name: 'Analytics', href: '/analytics', icon: BarChart3 },
   ];
 

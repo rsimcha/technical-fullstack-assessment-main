@@ -12,6 +12,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import AnalyticsPage from './pages/AnalyticsPage';
+import MaintenancePage from './pages/MaintenancePage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               }
             >
               <Route index element={<DashboardPage />} />
+              <Route path="maintenance" element={<MaintenancePage />} />
               <Route path="analytics" element={<AnalyticsPage />} />
             </Route>
 
