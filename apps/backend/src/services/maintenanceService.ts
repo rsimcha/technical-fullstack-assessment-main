@@ -27,6 +27,10 @@ const populateUsers: PopulateOptions[] = [
 
 export class MaintenanceService {
   async create(input: CreateMaintenanceRequestInput, actor: AuthenticatedUser) {
+    if (actor.role !== 'tenant') {
+      throw createError('Forbidden', 403);
+    }
+
     const request = await MaintenanceRequestModel.create({
       ...input,
       createdBy: new Types.ObjectId(actor.id),

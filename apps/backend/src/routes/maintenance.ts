@@ -16,13 +16,16 @@ import {
 
 const router = Router();
 
-// Shared (authenticated) routes
+// Tenant-only: creating a request
 router.post(
   '/',
   authenticate,
+  authorize('tenant'),
   validateBody(createMaintenanceRequestSchema),
   createRequest
 );
+
+// Shared (authenticated) routes
 router.get('/', authenticate, listRequests);
 router.get('/:id', authenticate, validateParams(idParamSchema), getRequest);
 
