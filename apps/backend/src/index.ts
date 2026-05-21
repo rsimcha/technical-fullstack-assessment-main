@@ -10,6 +10,7 @@ import { errorHandler } from './middleware/errorHandler';
 // Routes
 import authRoutes from './routes/auth';
 import maintenanceRoutes from './routes/maintenance';
+import usersRoutes from './routes/users';
 
 // Load environment variables
 dotenv.config();
@@ -54,6 +55,7 @@ app.get('/health', (req, res) => {
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/maintenance', maintenanceRoutes);
+app.use('/api/users', usersRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {
@@ -86,6 +88,8 @@ const startServer = async () => {
   }
 };
 
-startServer();
+if (process.env.NODE_ENV !== 'test') {
+  startServer();
+}
 
 export default app;
