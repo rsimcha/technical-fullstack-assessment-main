@@ -12,7 +12,7 @@ import {
   createMaintenanceRequestSchema,
   updateMaintenanceRequestSchema,
   idParamSchema,
-} from '../utils/validation';
+} from '../validators/maintenanceSchemas';
 
 const router = Router();
 

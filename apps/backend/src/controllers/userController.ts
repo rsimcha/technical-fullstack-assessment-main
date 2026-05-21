@@ -2,7 +2,7 @@ import { Response } from 'express';
 import { AuthenticatedRequest } from '../middleware/auth';
 import { asyncHandler } from '../middleware/errorHandler';
 import { userService } from '../services/userService';
-import { ListUsersQuery } from '../utils/validation';
+import { ListUsersQuery } from '../validators/userSchemas';
 
 export const listUsers = asyncHandler(
   async (req: AuthenticatedRequest, res: Response) => {

@@ -2,7 +2,7 @@ import { Response } from 'express';
 import { AuthenticatedRequest } from '../middleware/auth';
 import { asyncHandler } from '../middleware/errorHandler';
 import { maintenanceService } from '../services/maintenanceService';
-import { listMaintenanceQuerySchema } from '../utils/validation';
+import { listMaintenanceQuerySchema } from '../validators/maintenanceSchemas';
 
 export const createRequest = asyncHandler(
   async (req: AuthenticatedRequest, res: Response) => {

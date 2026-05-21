@@ -6,19 +6,14 @@ import {
 } from '../models/MaintenanceRequest';
 import { UserModel } from '../models/User';
 import { createError } from '../middleware/errorHandler';
-import { assertTransition } from '../utils/maintenance/status';
+import { AuthenticatedUser } from '../middleware/auth';
+import { assertTransition } from '../utils/maintenanceStatus';
 import {
   CreateMaintenanceRequestInput,
   ListMaintenanceQuery,
   UpdateMaintenanceRequestInput,
-} from '../utils/validation';
+} from '../validators/maintenanceSchemas';
 import { logger } from '../utils/logger';
-
-interface AuthenticatedUser {
-  id: string;
-  email: string;
-  role: 'admin' | 'manager' | 'tenant';
-}
 
 const populateUsers: PopulateOptions[] = [
   { path: 'createdBy', select: 'firstName lastName email role' },

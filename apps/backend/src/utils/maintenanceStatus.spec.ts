@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { MaintenanceStatus } from '../../models/MaintenanceRequest';
-import { assertTransition, canTransition, isTerminal } from './status';
+import { MaintenanceStatus } from '../models/MaintenanceRequest';
+import { assertTransition, canTransition, isTerminal } from './maintenanceStatus';
 
 describe('maintenance status state machine', () => {
   describe('canTransition', () => {

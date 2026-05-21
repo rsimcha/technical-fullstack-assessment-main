@@ -1,5 +1,5 @@
-import { createError } from '../../middleware/errorHandler';
-import { MaintenanceStatus } from '../../models/MaintenanceRequest';
+import { createError } from '../middleware/errorHandler';
+import { MaintenanceStatus } from '../models/MaintenanceRequest';
 
 const TRANSITIONS: Record<MaintenanceStatus, MaintenanceStatus[]> = {
   [MaintenanceStatus.OPEN]: [

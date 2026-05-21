@@ -7,7 +7,7 @@ import {
 } from '../controllers/authController';
 import { authenticate } from '../middleware/auth';
 import { validateBody } from '../middleware/validate';
-import { registerSchema, loginSchema } from '../utils/validation';
+import { registerSchema, loginSchema } from '../validators/authSchemas';
 
 const router = Router();
 

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { UserModel } from '../models/User';
-import { RegisterInput, LoginInput } from '../utils/validation';
+import { RegisterInput, LoginInput } from '../validators/authSchemas';
 import { createError } from '../middleware/errorHandler';
 import { logger } from '../utils/logger';
 

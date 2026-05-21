@@ -44,7 +44,7 @@ import {
 } from '../models/MaintenanceRequest';
 import { UserModel } from '../models/User';
 import { maintenanceService } from './maintenanceService';
-import { ListMaintenanceQuery } from '../utils/validation';
+import { ListMaintenanceQuery } from '../validators/maintenanceSchemas';
 
 const tenantId = new Types.ObjectId().toString();
 const managerId = new Types.ObjectId().toString();

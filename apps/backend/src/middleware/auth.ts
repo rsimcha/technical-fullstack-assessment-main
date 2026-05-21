@@ -3,12 +3,14 @@ import jwt from 'jsonwebtoken';
 import { UserModel } from '../models/User';
 import { logger } from '../utils/logger';
 
+export interface AuthenticatedUser {
+  id: string;
+  email: string;
+  role: 'admin' | 'manager' | 'tenant';
+}
+
 export interface AuthenticatedRequest extends Request {
-  user?: {
-    id: string;
-    email: string;
-    role: 'admin' | 'manager' | 'tenant';
-  };
+  user?: AuthenticatedUser;
 }
 
 export const authenticate = async (

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { listUsers } from '../controllers/userController';
 import { authenticate } from '../middleware/auth';
 import { validateQuery } from '../middleware/validate';
-import { listUsersQuerySchema } from '../utils/validation';
+import { listUsersQuerySchema } from '../validators/userSchemas';
 
 const router = Router();
 
