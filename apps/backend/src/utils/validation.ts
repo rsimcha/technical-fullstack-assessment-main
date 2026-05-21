@@ -78,6 +78,13 @@ export const listMaintenanceQuerySchema = z
 
 export const idParamSchema = z.object({ id: objectId }).strict();
 
+// User listing schemas
+export const listUsersQuerySchema = z
+  .object({
+    role: z.enum(['admin', 'manager', 'tenant']).optional(),
+  })
+  .strict();
+
 // Type exports
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
@@ -89,3 +96,4 @@ export type UpdateMaintenanceRequestInput = z.infer<
   typeof updateMaintenanceRequestSchema
 >;
 export type ListMaintenanceQuery = z.infer<typeof listMaintenanceQuerySchema>;
+export type ListUsersQuery = z.infer<typeof listUsersQuerySchema>;
