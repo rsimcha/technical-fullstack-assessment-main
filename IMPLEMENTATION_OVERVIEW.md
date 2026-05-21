@@ -103,5 +103,9 @@ I wrote a mix of integration and unit tests, leaning on integration where the va
 - `services/userService.spec.ts` — small unit test for UserService.
 - `utils/maintenanceStatus.spec.ts` — status transition helper unit test
 - `frontend/validators/maintenanceSchemas.spec.ts`, `frontend/utils/format.spec.ts` — coverage of the shared validator fields and the label formatter.
+- `frontend/services/*.spec.ts` — API request construction for auth, users, and maintenance services, including `/users?role=manager`, maintenance filter params, create/update/delete endpoints, and auth localStorage helpers.
+- `frontend/contexts/AuthContext.spec.tsx` — auth initialization from stored credentials, refreshed-user persistence, login state updates, and logout state clearing.
+- `frontend/components/ProtectedRoute.spec.tsx` — unauthenticated redirects, allowed-role rendering, and denied-role messaging.
+- `frontend/pages/MaintenancePage.spec.tsx` — tenant create flow, manager-only controls, assignee filtering, maintenance filter refetching, and edit patch submission.
 
-Tests run against `mongodb-memory-server` so they don't need a live MongoDB. Vitest config is at the root so all projects share one runner.
+Backend integration tests run against `mongodb-memory-server` so they don't need a live MongoDB. Frontend component tests run in `jsdom` with React Testing Library and jest-dom matchers. Vitest config is at the root so all projects share one runner.
