@@ -19,6 +19,13 @@ import {
   titleField,
 } from '../../validators/maintenanceSchemas';
 
+const ALLOWED_TRANSITIONS: Record<MaintenanceStatus, MaintenanceStatus[]> = {
+  [MaintenanceStatus.OPEN]: [MaintenanceStatus.IN_PROGRESS, MaintenanceStatus.CANCELLED],
+  [MaintenanceStatus.IN_PROGRESS]: [MaintenanceStatus.COMPLETED, MaintenanceStatus.CANCELLED],
+  [MaintenanceStatus.COMPLETED]: [],
+  [MaintenanceStatus.CANCELLED]: [],
+};
+
 const schema = z
   .object({
     title: titleField,
@@ -106,8 +113,18 @@ const EditMaintenanceForm: React.FC<EditMaintenanceFormProps> = ({
           <label htmlFor="status" className={labelClass}>
             Status
           </label>
-          <select id="status" className="input" {...register('status')}>
-            {Object.values(MaintenanceStatus).map(s => (
+          <select
+            id="status"
+            className="input"
+            disabled={ALLOWED_TRANSITIONS[request.status].length === 0}
+            title={
+              ALLOWED_TRANSITIONS[request.status].length === 0
+                ? `Status is locked — ${formatEnumLabel(request.status)} requests cannot be transitioned`
+                : undefined
+            }
+            {...register('status')}
+          >
+            {[request.status, ...ALLOWED_TRANSITIONS[request.status]].map(s => (
               <option key={s} value={s}>
                 {formatEnumLabel(s)}
               </option>
