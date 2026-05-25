@@ -184,4 +184,20 @@ describe('GET /api/users?role=', () => {
     expect(res.status).toBe(401);
     expect(res.body.success).toBe(false);
   });
+
+  it('returns 403 when the caller is a tenant', async () => {
+    const { token } = await seedUser({
+      email: 'tenant@x.com',
+      role: 'tenant',
+      firstName: 'Tenant',
+      lastName: 'User',
+    });
+
+    const res = await request(app)
+      .get('/api/users?role=manager')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(res.status).toBe(403);
+    expect(res.body.success).toBe(false);
+  });
 });

@@ -1,4 +1,4 @@
-import { FilterQuery, PopulateOptions, Types } from 'mongoose';
+import { FilterQuery, PopulateOptions, Types, UpdateQuery } from 'mongoose';
 import {
   MaintenanceRequest,
   MaintenanceRequestModel,

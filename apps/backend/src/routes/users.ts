@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { listUsers } from '../controllers/userController';
-import { authenticate } from '../middleware/auth';
+import { authenticate, authorize } from '../middleware/auth';
 import { validateQuery } from '../middleware/validate';
 import { listUsersQuerySchema } from '../validators/userSchemas';
 
 const router = Router();
 
-router.get('/', authenticate, validateQuery(listUsersQuerySchema), listUsers);
+router.get('/', authenticate, authorize('manager', 'admin'), validateQuery(listUsersQuerySchema), listUsers);
 
 export default router;
