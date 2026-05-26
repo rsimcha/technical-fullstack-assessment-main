@@ -66,7 +66,7 @@ const MaintenanceTableRow: React.FC<MaintenanceTableRowProps> = ({
     <td className={td}>{formatDate(request.createdAt)}</td>
     {canManage && (
       <td className={`${td} text-right`}>
-        <div className="inline-flex items-center gap-2">
+        <div className="-mr-3 inline-flex items-center gap-2">
           <button
             type="button"
             className="btn-ghost btn-sm"
