@@ -1,4 +1,4 @@
-import { FilterQuery, PopulateOptions, Types, UpdateQuery } from 'mongoose';
+import { FilterQuery, PopulateOptions, Types } from 'mongoose';
 import {
   MaintenanceRequest,
   MaintenanceRequestModel,
@@ -130,15 +130,14 @@ export class MaintenanceService {
     if (patch.assignedTo === null) {
       request.assignedTo = undefined;
     } else if (patch.assignedTo) {
-      const assignee = await UserModel.findById(patch.assignedTo).select('role');
+      const assignee = await UserModel.findById(patch.assignedTo).select(
+        'role'
+      );
       if (!assignee) {
         throw createError('Assignee not found', 400);
       }
       if (assignee.role !== 'manager') {
-        throw createError(
-          'Requests can only be assigned to managers',
-          400
-        );
+        throw createError('Requests can only be assigned to managers', 400);
       }
       request.assignedTo = new Types.ObjectId(patch.assignedTo);
     }
